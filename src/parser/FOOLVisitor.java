@@ -1,4 +1,4 @@
-// Generated from FOOL.g4 by ANTLR 4.6
+// Generated from /Users/Domenico/IdeaProjects/Fool/src/parser/FOOL.g4 by ANTLR 4.7.2
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -25,11 +25,30 @@ public interface FOOLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLetInExp(FOOLParser.LetInExpContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code classExpmissing}
+	 * labeled alternative in {@link FOOLParser#prog}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassExpmissing(FOOLParser.ClassExpmissingContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link FOOLParser#let}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitLet(FOOLParser.LetContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FOOLParser#classdec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassdec(FOOLParser.ClassdecContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FOOLParser#letVar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLetVar(FOOLParser.LetVarContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FOOLParser#vardec}.
 	 * @param ctx the parse tree
@@ -68,6 +87,12 @@ public interface FOOLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitType(FOOLParser.TypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FOOLParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrint(FOOLParser.PrintContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link FOOLParser#exp}.
 	 * @param ctx the parse tree
@@ -128,4 +153,45 @@ public interface FOOLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunExp(FOOLParser.FunExpContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code methExp}
+	 * labeled alternative in {@link FOOLParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethExp(FOOLParser.MethExpContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code newExp}
+	 * labeled alternative in {@link FOOLParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNewExp(FOOLParser.NewExpContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code null}
+	 * labeled alternative in {@link FOOLParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNull(FOOLParser.NullContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code asmStm}
+	 * labeled alternative in {@link FOOLParser#stm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAsmStm(FOOLParser.AsmStmContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ifStm}
+	 * labeled alternative in {@link FOOLParser#stm}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfStm(FOOLParser.IfStmContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link FOOLParser#stms}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStms(FOOLParser.StmsContext ctx);
 }
