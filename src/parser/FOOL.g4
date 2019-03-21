@@ -8,9 +8,9 @@ grammar FOOL;
  * PARSER RULES
  *------------------------------------------------------------------*/
   
-prog   : (print | exp) SEMIC                                      #singleExp
+prog   : (print | exp) SEMIC                                     #singleExp
        | let (exp SEMIC | print SEMIC | stms)+                   #letInExp
-       | (classdec)+ (let (exp SEMIC | print SEMIC | stms)+ )?   #classExpmissing
+       | (classdec)+ (let (exp SEMIC | print SEMIC | stms)+ )?   #classExp
        ;
 
 let    : LET (dec SEMIC)+ IN ;
@@ -40,10 +40,10 @@ type   : INT
 print : PRINT LPAR (ID | EXP) RPAR
       ;
     
-exp    :  ('-')? left=term ((PLUS | MINUS) right=exp)?
+exp   : left=term ((PLUS | MINUS) right=exp)?
       ;
    
-term   : left=factor ((TIMES | DIV) right=term)?
+term  : left=factor ((TIMES | DIV) right=term)?
       ;
    
 factor : left=value ( (EQ|GREATERTHAN|LESSERTHAN|GREATEREQUAL|LESSEREQUAL|AND|OR) right=factor)?

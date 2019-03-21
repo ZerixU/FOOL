@@ -23,43 +23,47 @@ import parser.FOOLParser.VarasmContext;
 import parser.FOOLParser.VardecContext;
 import util.SemanticError;
 
-public class FoolVisitorImpl extends FOOLBaseVisitor<Node> {
-	
-	
+public class FoolVisitor extends FOOLBaseVisitor<Node> {
+
+
+
+	@Override
+	public Node visitSingleExp(SingleExpContext ctx) {
+
+		if(ctx.print() == null) {
+            return new ExpNode(visit(ctx.exp()));
+
+		}
+
+        return new ExpNode(visit(ctx.print()));
+
+
+	}
 	
 	@Override
 	public Node visitLetInExp(LetInExpContext ctx) {
 		
-		//resulting node of the right type
 		ProgLetInNode res;
-		
-		//list of declarations in @res
-		ArrayList<Node> declarations = new ArrayList<Node>();
-		
-		//visit all nodes corresponding to declarations inside the let context and store them in @declarations
-		//notice that the ctx.let().dec() method returns a list, this is because of the use of * or + in the grammar
-		//antlr detects this is a group and therefore returns a list
+
+		// List of declarations
+		ArrayList<Node> declarationsList = new ArrayList<Node>();
+
+		// List of exps and stms
+		ArrayList<Node> expstmsList = new java.util.ArrayList<Node>();
+
 		for(DecContext dc : ctx.let().dec()){
-			declarations.add( visit(dc) );
+			declarationsList.add( visit(dc) );
 		}
-		
-		//visit exp context
-		Node exp = visit( ctx.exp() );
-		
+
+		for(LetInExpContext c: ctx.children) {
+
+		}
+
 		//build @res accordingly with the result of the visits to its content
-		res = new ProgLetInNode(declarations,  exp);
+		res = new ProgLetInNode(declarationsList, expstmsList );
 		
 		return res;
 	}
-	
-	@Override
-	public Node visitSingleExp(SingleExpContext ctx) {
-		
-		//simply return the result of the visit to the inner exp
-		return visit(ctx.exp());
-		
-	}
-	
 	
 	@Override
 	public Node visitVarasm(VarasmContext ctx) {
